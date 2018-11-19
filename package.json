@@ -1,0 +1,31 @@
+{
+  "name": "cucumber-learning",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/cucumber-js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nazmulb/cucumber.git"
+  },
+  "keywords": [
+    "cucumberjs",
+    "bdd",
+    "tdd",
+    "test",
+    "testing",
+    "gherkin",
+    "cucumber"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nazmulb/cucumber/issues"
+  },
+  "homepage": "https://github.com/nazmulb/cucumber#readme",
+  "devDependencies": {
+    "cucumber": "^5.0.2"
+  }
+}
