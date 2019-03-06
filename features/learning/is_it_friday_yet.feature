@@ -1,4 +1,4 @@
-Feature: Is it Friday yet2?
+Feature: Is it Friday yet?
   Everybody wants to know when it's Friday
 
   Scenario Outline: Today is or is not Friday
