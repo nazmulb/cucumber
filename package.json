@@ -26,5 +26,6 @@
   "homepage": "https://github.com/nazmulb/cucumber#readme",
   "devDependencies": {
     "cucumber": "^5.0.2"
-  }
+  },
+  "dependencies": {}
 }

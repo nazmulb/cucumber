@@ -13,5 +13,11 @@ Before({tags: 'not @smoke'}, function () {
 After({tags: '@smoke'}, function (scenario) {
     if (scenario.result.status === Status.FAILED) {
         console.log("Execute after hook");
+        try{
+            // Attaching plain text
+            this.attach('Some text');
+        } catch (e) {
+            console.error(e);
+        }
     }
 });
