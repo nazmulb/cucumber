@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "./node_modules/.bin/cucumber-js --tags \"@smoke\""
+    "test": "./node_modules/.bin/cucumber-js"
   },
   "repository": {
     "type": "git",
