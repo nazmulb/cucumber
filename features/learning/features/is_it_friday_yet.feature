@@ -6,7 +6,6 @@ Feature: Is it Friday yet?
   Scenario Outline: Today is or is not Friday
     Given today is "<day>"
     When I ask whether it's Friday yet
-    And I pick blue
     Then I should be told "<answer>"
 
     Examples:

@@ -1,3 +1,11 @@
 http://docs.cucumber.io/guides/overview/
 https://www.glowtouch.com/test-driven-development-vs-behavior-driven-development/
 https://joshldavis.com/2013/05/27/difference-between-tdd-and-bdd/
+https://dzone.com/articles/getting-started-with-cucumberjs-on-nodejs
+https://www.codementor.io/cuketest/one-quick-way-to-create-your-cucumber-js-test-script-iq5kxwy8y
+https://www.codementor.io/jeremyrajan/acceptance-testing-javascript-cucumber-webdriverio-du1087f5i
+https://www.npmjs.com/package/selenium-cucumber-js
+https://github.com/qmetry/cucumber-javascript-example
+https://github.com/bustardcelly/cucumberjs-examples
+https://docs.cucumber.io/community/blog-posts/
+https://docs.cucumber.io/community/projects-using-cucumber/
