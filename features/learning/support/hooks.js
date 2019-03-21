@@ -1,4 +1,4 @@
-const { Before, After, Status } = require('cucumber');
+const { Before, After, Status, BeforeAll, AfterAll } = require('cucumber');
 
 // Before hooks run before the first step of each scenario. 
 // Only use a Before hook for low-level logic such as starting a browser or deleting data from a database.
@@ -24,4 +24,16 @@ After({tags: '@smoke'}, async function (scenario) {
             console.error(e);
         }
     }
+});
+
+// Defines a hook which is run before all scenarios.
+// Multiple BeforeAll hooks are executed in the order that they are defined.
+BeforeAll(async function () {
+    //console.log("Execute before all hook");
+});
+
+// Defines a hook which is run after all scenarios have completed.
+// Multiple AfterAll hooks are executed in the reverse order that they are defined.
+AfterAll(async function () {
+    //console.log("Execute after all hook");
 });
