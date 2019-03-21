@@ -10,6 +10,6 @@ Feature: Is it Friday yet?
 
     Examples:
       | day | answer |
-      | Friday | TGIF |
-      | Sunday | Nope |
-      | anything else! | Nope |
+      | Friday | Yes |
+      | Sunday | No |
+      | anything else! | No |
