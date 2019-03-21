@@ -9,3 +9,6 @@ https://github.com/qmetry/cucumber-javascript-example
 https://github.com/bustardcelly/cucumberjs-examples
 https://docs.cucumber.io/community/blog-posts/
 https://docs.cucumber.io/community/projects-using-cucumber/
+https://github.com/lykmapipo/nodejs-cucumber-sample
+https://github.com/opencredo/cucumber-js-quickstart
+https://www.testcookbook.com/book/javascript/cucumber-js/cucumberjs-+-selenium.html

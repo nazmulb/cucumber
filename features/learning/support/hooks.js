@@ -3,7 +3,7 @@ const { Before, After, Status } = require('cucumber');
 // Before hooks run before the first step of each scenario. 
 // Only use a Before hook for low-level logic such as starting a browser or deleting data from a database.
 // Hooks can be conditionally selected for execution based on the tags of the scenario.
-Before({tags: 'not @smoke'}, async function () {
+Before({tags: '@smoke'}, async function () {
     console.log("Execute before hook");
 });
 
