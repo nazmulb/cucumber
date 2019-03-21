@@ -1,6 +1,6 @@
 const assert = require('assert');
 const { Given, When, Then } = require('cucumber');
-const Day = require('../../../lib/day');
+const Day = require('../../../lib/Day');
 
 Given('today is {string}', async function (givenDay) {
     this.today = givenDay;
