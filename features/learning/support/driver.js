@@ -25,7 +25,7 @@ const buildFirefoxDriver = function() {
 };
 
 const buildDriver = function(platform) {
-    switch(platform) {
+    switch(platform.toLowerCase()) {
       case 'android':
         return buildAndroidDriver();
       case 'firefox':
