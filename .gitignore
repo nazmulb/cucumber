@@ -1,6 +1,7 @@
 .idea
 node_modules
 **/npm-debug.log
+reports
 
 # OS
 .DS_Store

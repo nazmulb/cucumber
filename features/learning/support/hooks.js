@@ -1,4 +1,6 @@
 const { Before, After, Status, BeforeAll, AfterAll } = require('cucumber');
+const _ = require('lodash');
+const sanitize = require('sanitize-filename');
 
 // Before hooks run before the first step of each scenario. 
 // Only use a Before hook for low-level logic such as starting a browser or deleting data from a database.
@@ -18,8 +20,8 @@ After({tags: '@smoke'}, async function (scenario) {
     if (scenario.result.status === Status.FAILED) {
         console.log("Execute after hook");
         try{
-            // Attaching plain text
-            this.attach('Some text');
+            // Taking screenshot
+            this.screenshot.create(sanitize(_.toLower(scenario.pickle.name) + ".png").replace(/ /g, "_"));
         } catch (e) {
             console.error(e);
         }
