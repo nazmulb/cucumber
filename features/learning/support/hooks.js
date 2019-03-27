@@ -24,6 +24,10 @@ After({tags: '@smoke'}, async function (scenario) {
             console.error(e);
         }
     }
+
+    if(this.isBrowser){
+        this.driver.quit();
+    }
 });
 
 // Defines a hook which is run before all scenarios.
