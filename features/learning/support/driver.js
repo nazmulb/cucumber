@@ -26,9 +26,9 @@ const buildFirefoxDriver = function() {
 
 const buildDriver = function(platform) {
     switch(platform) {
-      case 'ANDROID':
+      case 'android':
         return buildAndroidDriver();
-      case 'FIREFOX':
+      case 'firefox':
         return buildFirefoxDriver();
       default:
         return buildChromeDriver();

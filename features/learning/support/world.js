@@ -7,15 +7,15 @@ class World {
     constructor({attach, parameters}) {
         this.attach = attach;
         this.parameters = parameters;
-        this.platform = process.env.PLATFORM || "CHROME";
+        this.platform = process.env.PLATFORM || "chrome";
         
         // browser driver instance
-		    this.driver = buildDriver(this.platform);
+        this.driver = buildDriver(this.platform);
     }
     
     get isBrowser() {
-		    return _.isFunction(this.driver.manage);
-	  }
+        return _.isFunction(this.driver.manage);
+    }
 
     helloWorld(){
         console.log("Hello World!");

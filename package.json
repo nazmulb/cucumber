@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "./node_modules/.bin/cucumber-js -p progress --tags \"@smoke\""
+    "test": "PLATFORM=chrome ./node_modules/.bin/cucumber-js -p progress --tags \"@smoke\""
   },
   "repository": {
     "type": "git",
