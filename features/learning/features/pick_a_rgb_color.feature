@@ -9,6 +9,6 @@ Feature: Pick a RGB Color
 
     Examples:
       | color | result |
-      | red | not found |
+      | red | found |
       | green | found |
       | yellow | not found |
