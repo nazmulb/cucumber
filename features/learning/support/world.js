@@ -1,5 +1,6 @@
 const {setWorldConstructor} = require('cucumber');
 const _ = require('lodash');
+const path = require('path');
 const {buildDriver} = require('./driver');
 const URL = require('../../../lib/learning/URL');
 const Screenshot = require('../../../lib/learning/Screenshot');
@@ -15,8 +16,10 @@ class World {
         // browser driver instance
         this.driver = buildDriver(this.platform);
 
-        this.screenshot = new Screenshot(this.driver);
-        this.screenshot.ensureDirectoryExists();
+
+        this.screenshotPath = path.join("screenshots");
+        this.screenshot = new Screenshot();
+        this.screenshot.ensureDirectoryExists(this.screenshotPath);
     }
     
     get isBrowser() {

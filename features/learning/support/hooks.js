@@ -21,7 +21,7 @@ After({tags: '@smoke'}, async function (scenario) {
         console.log("Execute after hook");
         try{
             // Taking screenshot
-            await this.screenshot.create(sanitize(_.toLower(scenario.pickle.name) + ".png").replace(/ /g, "_"));
+            this.screenshot.create(this.driver, sanitize(_.toLower(scenario.pickle.name) + ".png").replace(/ /g, "_"), this.screenshotPath);
         } catch (e) {
             console.error(e);
         }

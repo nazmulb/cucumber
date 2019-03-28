@@ -1,4 +1,4 @@
-@smoke
+
 Feature: Visit Nazmul Website
 
   Scenario: View nazmul profile page title

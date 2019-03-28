@@ -32,6 +32,7 @@
     "selenium-webdriver": "^4.0.0-alpha.1"
   },
   "dependencies": {
+    "bluebird": "^3.5.3",
     "lodash": "^4.17.11"
   }
 }
