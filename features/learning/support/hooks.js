@@ -21,14 +21,14 @@ After({tags: '@smoke'}, async function (scenario) {
         console.log("Execute after hook");
         try{
             // Taking screenshot
-            this.screenshot.create(sanitize(_.toLower(scenario.pickle.name) + ".png").replace(/ /g, "_"));
+            await this.screenshot.create(sanitize(_.toLower(scenario.pickle.name) + ".png").replace(/ /g, "_"));
         } catch (e) {
             console.error(e);
         }
     }
 
     if(this.isBrowser){
-        this.driver.quit();
+        await this.driver.quit();
     }
 });
 
