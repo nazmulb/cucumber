@@ -1,4 +1,4 @@
-
+@smoke
 Feature: Pick a RGB Color
   Try to pick the right RGB color
 
@@ -9,6 +9,6 @@ Feature: Pick a RGB Color
 
     Examples:
       | color | result |
-      | red | found |
+      | red | not found |
       | green | found |
       | yellow | not found |
