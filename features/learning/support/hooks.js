@@ -18,7 +18,6 @@ Before({tags: "@ignore"}, async function() {
 // Hooks can be conditionally selected for execution based on the tags of the scenario.
 After({tags: '@smoke'}, async function (scenario) {
     if (scenario.result.status === Status.FAILED) {
-        console.log("Execute after hook");
         try{
             // Taking screenshot
             await this.screenshot.create(this.driver, sanitize(_.toLower(scenario.pickle.name) + ".png").replace(/ /g, "_"), this.screenshotPath);

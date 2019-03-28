@@ -17,7 +17,7 @@ class World {
         this.driver = buildDriver(this.platform);
 
 
-        this.screenshotPath = path.join("screenshots");
+        this.screenshotPath = path.join("reports", "screenshots");
         this.screenshot = new Screenshot();
         this.screenshot.ensureDirectoryExists(this.screenshotPath);
     }
