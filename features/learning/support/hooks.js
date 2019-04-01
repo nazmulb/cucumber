@@ -1,4 +1,4 @@
-const { Before, After, Status, BeforeAll, AfterAll, defineSupportCode } = require('cucumber');
+const { Before, After, Status, BeforeAll, AfterAll } = require('cucumber');
 const _ = require('lodash');
 const sanitize = require('sanitize-filename');
 
@@ -41,28 +41,4 @@ BeforeAll(async function () {
 // Multiple AfterAll hooks are executed in the reverse order that they are defined.
 AfterAll(async function () {
     //console.log("Execute after all hook.");
-});
-
-defineSupportCode(async function({registerHandler}) {
-
-    // Called once before anything is run at all, provided with the list of features.
-    registerHandler("BeforeFeatures", async function() {
-        //console.log("Execute before anything is run at all, provided with the list of features.");
-    });
-
-    // Called once after everything is run, provided with the list of features.
-    registerHandler("AfterFeatures", async function() {
-        //console.log("Execute after everything is run, provided with the list of features.");
-    });
-
-    // Called before each Feature file is run, provided with the Feature.
-    registerHandler("BeforeFeature", async function() {
-        //console.log("Execute before each feature file is run.");
-    });
-
-    // Called after each Feature is run, provided with the Feature.
-    registerHandler("AfterFeature", async function() {
-        //console.log("Execute after each feature is run.");
-    });
-
 });
