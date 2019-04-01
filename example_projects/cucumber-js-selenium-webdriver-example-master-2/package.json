@@ -1,0 +1,35 @@
+{
+  "name": "cucumber-js-selenium-webdriver-example",
+  "version": "0.0.1",
+  "description": "An example of browser based testing via cucumber-js, selenium-webdriver and chai",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MYOB-Technology/cucumber-js-selenium-webdriver-example.git"
+  },
+  "author": "Matthew Ueckerman",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/MYOB-Technology/cucumber-js-selenium-webdriver-example/issues"
+  },
+  "homepage": "https://github.com/MYOB-Technology/cucumber-js-selenium-webdriver-example#readme",
+  "devDependencies": {
+    "babel-register": "^6.18.0",
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "babel-plugin-transform-builtin-extend": "^1.1.0",
+    "cucumber": "^1.3.1",
+    "selenium-webdriver": "^3.0.1",
+    "chai": "^3.5.0",
+    "sanitize-filename": "^1.6.1",
+    "lodash": "^4.17.2",
+    "mkdirp": "^0.5.1"
+  },
+  "scripts": {
+    "clean": "rm -rf tmp",
+    "install-geckodriver": "./provisioning/install_geckodriver.sh",
+    "setup": "npm cache clean && rm -rf node_modules && npm install && npm run install-geckodriver",
+    "test": "PATH=$PATH:build/install_libraries/bin cucumber-js --format pretty --compiler=js:babel-register --require=features/support --require=features/step_definitions",
+    "commit": "npm run clean && npm run test"
+  }
+}

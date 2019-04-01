@@ -1,0 +1,24 @@
+{
+  "name": "cucumber-js-selenium-webdriver-example",
+  "version": "1.0.0",
+  "description": "A starter for acceptance testing using cucumber-js and webdriver-js.",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Matt-B/cucumber-js-selenium-webdriver-example.git"
+  },
+  "scripts": {
+    "test": "node_modules/grunt-cli/bin/grunt"
+  },
+  "devDependencies": {
+    "cucumber": "^2.3.1",
+    "selenium-webdriver": "^3.5.0",
+    "chai": "^4.1.1",
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-exec": "^3.0.0",
+    "grunt-env": "^0.4.4",
+    "sanitize-filename": "^1.6.1",
+    "appium": "^1.6.5"
+  }
+}
