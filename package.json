@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/nazmulb/cucumber#readme",
   "devDependencies": {
+    "chai": "^4.2.0",
     "chromedriver": "^2.46.0",
     "cucumber": "^5.0.2",
     "geckodriver": "^1.16.0",

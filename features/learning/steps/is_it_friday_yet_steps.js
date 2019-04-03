@@ -1,4 +1,4 @@
-const assert = require('assert');
+const {expect} = require('chai');
 const Promise = require('bluebird');
 const { Given, When, Then } = require('cucumber');
 const Day = require('../../../lib/learning/Day');
@@ -13,5 +13,5 @@ When('I ask whether it\'s Friday yet', async function () {
 });
 
 Then('I should be told {string}', async function (expectedAnswer) {
-    assert.equal(this.actualAnswer, expectedAnswer);
+    expect(this.actualAnswer).to.equal(expectedAnswer);
 });

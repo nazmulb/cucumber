@@ -1,4 +1,4 @@
-const assert = require('assert');
+const {expect} = require('chai');
 const { Given, When, Then } = require('cucumber');
 
 Given('I visit nazmul profile page', async function () {
@@ -7,6 +7,6 @@ Given('I visit nazmul profile page', async function () {
 
 Then('I see title {string}', async function (expectedTitle) {
     await this.driver.getTitle().then(function (actualTitle) {
-        assert.equal(actualTitle, expectedTitle);
+        expect(actualTitle).to.equal(expectedTitle);
     });
 });
