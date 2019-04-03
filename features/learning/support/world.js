@@ -2,6 +2,7 @@ const {setWorldConstructor} = require('cucumber');
 const selenium = require('selenium-webdriver');
 const {expect, assert} = require('chai');
 const _ = require('lodash');
+const Promise = require('bluebird');
 const path = require('path');
 const {buildDriver} = require('./driver');
 const URL = require('../../../lib/learning/URL');
@@ -52,8 +53,8 @@ class World {
         return url.getAppUrlForEnv(this.env);
     }
 
-    helloWorld(){
-        console.log("Hello World!");
+    sleep(milliseconds){
+        return Promise.delay(milliseconds);
     }
 }
 
