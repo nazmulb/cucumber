@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "ENVIRONMENT=prod PLATFORM=chrome ./node_modules/.bin/cucumber-js -p progress --tags \"@smoke\""
+    "test": "./node_modules/.bin/cucumber-js -p progress --tags \"@smoke\""
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "bluebird": "^3.5.3",
+    "dotenv": "^7.0.0",
     "lodash": "^4.17.11",
     "mkdirp": "^0.5.1"
   }

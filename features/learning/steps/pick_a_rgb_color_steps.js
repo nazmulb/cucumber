@@ -1,4 +1,3 @@
-const {expect} = require('chai');
 const { Given, When, Then } = require('cucumber');
 const Color = require('../../../lib/learning/Color');
 
@@ -11,5 +10,5 @@ When('I pick {color}', async function (color) {
 });
 
 Then('The color you picked is {string} under rgb', async function (expectedAnswer) {
-    expect(this.actualAnswer).to.equal(expectedAnswer);
+    this.expect(this.actualAnswer).to.equal(expectedAnswer);
 });
