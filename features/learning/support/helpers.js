@@ -31,17 +31,18 @@ module.exports = {
     loadPage: async function(url) {
         await this.world.driver.get(url);
 
-        if(this.world.debug) console.log(url);
+        if(this.world.debug) console.log('loadPage: '+url);
         
         // now wait for the body element to be present
-        this.waitFor('body');
+        await this.waitFor('body');
     },
 
     /**
-     * Wait For
-     * @returns {Promise} resolved when the current page is reloaded or refreshed
+     * Wait for any element to be found
+     * @param {string} locator - css or xpath selector element
+     * @param {integer} waitInSeconds - number of seconds to wait for the element to load
      * @example
-     *      helpers.waitFor();
+     *      helpers.waitFor('body', 15);
      */
     waitFor: async function(locator, waitInSeconds) {
 
@@ -54,18 +55,39 @@ module.exports = {
         
         const selector = (locator.indexOf('//') === 0) ? "xpath" : "css";
 
-        if(this.world.debug) console.log(locator);
+        if(this.world.debug) console.log('waitFor: '+locator);
 
         await this.world.driver.wait(this.world.selenium.until.elementLocated(this.world.selenium.By[selector](locator)), timeout);
     },
 
     /**
+     * To find an element on the page
+     * @param {string} locator - css or xpath selector element
+     * @returns {WebElementPromise} an element that can be used to issue commands against the located element
+     * @example
+     *      helpers.findElement('body');
+     */
+    findElement: async function(locator) {
+
+        if (!this.world.isBrowser) {
+			throw new Error('Tests are not running on a web browser, no web elements to wait for');
+        }
+        
+        const selector = (locator.indexOf('//') === 0) ? "xpath" : "css";
+
+        if(this.world.debug) console.log('findElement: '+locator);
+
+        return this.world.driver.findElement(this.world.selenium.By[selector](locator));
+    },
+
+    /**
      * Reload or refresh page
-     * @returns {Promise} resolved when the current page is reloaded or refreshed
      * @example
      *      helpers.refresh();
      */
     refresh: async function() {
+        if(this.world.debug) console.log('refresh');
+
         await this.world.driver.navigate().refresh();
     }
 };

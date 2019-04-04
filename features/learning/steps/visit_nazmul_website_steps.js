@@ -5,17 +5,15 @@ Given('I visit nazmul website', async function () {
 });
 
 When('I click my profile link', async function () {
-    this.helpers.waitFor('//*[@id="pagebar"]/li[2]/a');
+    const element = '#pagebar > li.page_item.page-item-8 > a';
 
-    const el = await this.driver.findElement(this.selenium.By.xpath('//*[@id="pagebar"]/li[2]/a'));
+    this.helpers.waitFor(element);
+    const el = await this.helpers.findElement(element);
     await el.click();
     await this.sleep(2000);
 
     // now wait for the body element to be present
-    this.helpers.waitFor('html');
-
-    //const c = await body.getAttribute('class');
-    //console.log(c);
+    this.helpers.waitFor('body');
 });
 
 Then('I see title {string}', async function (expectedTitle) {

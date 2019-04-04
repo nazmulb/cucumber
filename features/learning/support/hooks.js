@@ -6,10 +6,12 @@ const sanitize = require('sanitize-filename');
 // Only use a Before hook for low-level logic such as starting a browser or deleting data from a database.
 // Hooks can be conditionally selected for execution based on the tags of the scenario.
 Before({tags: 'not @smoke'}, async function () {
-    console.log("Execute before hook.");
+    if(this.debug) console.log("Before hook");
 });
 
 Before({tags: "@ignore"}, async function() {
+    if(this.debug) console.log("Before hook: skipped");
+
     return "skipped";
 });
 
@@ -19,6 +21,8 @@ Before({tags: "@ignore"}, async function() {
 After({tags: '@smoke'}, async function (scenario) {
     if (scenario.result.status === Status.FAILED) {
         try{
+            if(this.debug) console.log('After Hook: '+scenario.result.status);
+
             // Taking screenshot
             await this.screenshot.create(this.driver, sanitize(_.toLower(scenario.pickle.name) + ".png").replace(/ /g, "_"), this.screenshotPath);
         } catch (e) {
@@ -27,9 +31,9 @@ After({tags: '@smoke'}, async function (scenario) {
     }
 
     if(this.isBrowser){
-        if(this.debug) console.log(this.isBrowser);
-        
-        await this.sleep(15000);
+        if(this.debug) console.log('After Hook: '+this.isBrowser);
+
+        //await this.sleep(5000);
         await this.driver.quit();
     }
 });
