@@ -8,6 +8,8 @@ const {buildDriver} = require('./driver');
 const URL = require('../../../lib/learning/URL');
 const Screenshot = require('../../../lib/learning/Screenshot');
 const helpers = require('../support/helpers');
+const nazmulWebsite = require('../../../resources/page-objects/nazmul-website');
+
 
 //Use dotenv to read .env vars into Node
 require('dotenv').config();
@@ -35,6 +37,8 @@ class World {
 
 
         this.helpers = helpers._init(this);
+
+        this.page = {nazmulWebsite: nazmulWebsite};
     }
     
     get isBrowser() {
