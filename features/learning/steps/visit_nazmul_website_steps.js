@@ -6,7 +6,6 @@ Given('I visit nazmul website', async function () {
 
 When('I click my profile link', async function () {
     const myprofile = '#pagebar > li.page_item.page-item-8 > a';
-
     await this.helpers.waitFor(myprofile);
     var el = await this.helpers.findElement(myprofile);
     await el.click();
@@ -14,13 +13,15 @@ When('I click my profile link', async function () {
 
     // now wait for the body element to be present
     await this.helpers.waitFor('body');
+});
 
+When('I search for {string}', async function (keyword) {
     const search = '#s';
     await this.helpers.waitFor(search);
     el = await this.helpers.findElement(search);
 
     await this.helpers.scrollToElement(el);
-    await el.sendKeys('Mac');
+    await el.sendKeys(keyword);
     await el.sendKeys(this.selenium.Key.ENTER);
 });
 
