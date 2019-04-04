@@ -81,6 +81,19 @@ module.exports = {
     },
 
     /**
+     * Scroll to the element
+     * @param {WebElement} element - the element
+     * @example
+     *      helpers.scrollToElement(el);
+     */
+    scrollToElement: async function(element) {
+        if(this.world.debug) console.log('scrollToElement');
+
+        await this.world.driver.executeScript('arguments[0].scrollIntoView()', element);
+        await this.world.sleep(1000);
+    },
+
+    /**
      * Reload or refresh page
      * @example
      *      helpers.refresh();

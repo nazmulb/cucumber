@@ -19,7 +19,8 @@ When('I click my profile link', async function () {
     await this.helpers.waitFor(search);
     el = await this.helpers.findElement(search);
 
-    await el.sendKeys('mac');
+    await this.helpers.scrollToElement(el);
+    await el.sendKeys('Mac');
     await el.sendKeys(this.selenium.Key.ENTER);
 });
 
