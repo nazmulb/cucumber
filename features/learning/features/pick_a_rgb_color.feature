@@ -1,4 +1,4 @@
-
+@smoke
 Feature: Pick a RGB Color
   Try to pick the right RGB color
 
