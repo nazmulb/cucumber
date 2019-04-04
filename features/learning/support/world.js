@@ -7,6 +7,7 @@ const path = require('path');
 const {buildDriver} = require('./driver');
 const URL = require('../../../lib/learning/URL');
 const Screenshot = require('../../../lib/learning/Screenshot');
+const helpers = require('../support/helpers');
 
 //Use dotenv to read .env vars into Node
 require('dotenv').config();
@@ -19,6 +20,7 @@ class World {
         this.pf = process.env.PLATFORM || "chrome";
         this.env = process.env.ENVIRONMENT || "local";
         this.timeout = parseInt(process.env.DEFAULT_TIMEOUT) || 60000;
+        this.debug = (process.env.DEBUG == "true" ? true : false) || false;
         
         // browser driver instance
         this.driver = buildDriver(this.pf);
@@ -30,6 +32,9 @@ class World {
         this.screenshotPath = path.join("reports", "screenshots");
         this.screenshot = new Screenshot();
         this.screenshot.ensureDirectoryExists(this.screenshotPath);
+
+
+        this.helpers = helpers._init(this);
     }
     
     get isBrowser() {

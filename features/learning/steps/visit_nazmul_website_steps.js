@@ -1,27 +1,21 @@
 const { Given, When, Then } = require('cucumber');
 
 Given('I visit nazmul website', async function () {
-
-    const waitInSeconds = null;
-    // use either passed in timeout or global default
-    const timeout = (waitInSeconds) ? (waitInSeconds * 1000) : this.defaultTimeout;
-    await this.driver.get(this.appUrl);
-
-    // now wait for the body element to be present
-    await this.driver.wait(this.selenium.until.elementLocated(this.selenium.By.css('body')), timeout);
+    await this.helpers.loadPage(this.appUrl);
 });
 
 When('I click my profile link', async function () {
-    const el = await this.driver.findElement(this.selenium.By.css('#pagebar > li.page_item.page-item-8 > a'));
-    await el.click();
-    this.sleep(2000);
+    this.helpers.waitFor('//*[@id="pagebar"]/li[2]/a');
 
-    const waitInSeconds = null;
-    // use either passed in timeout or global default
-    const timeout = (waitInSeconds) ? (waitInSeconds * 1000) : this.defaultTimeout;
-    
+    const el = await this.driver.findElement(this.selenium.By.xpath('//*[@id="pagebar"]/li[2]/a'));
+    await el.click();
+    await this.sleep(2000);
+
     // now wait for the body element to be present
-    await this.driver.wait(this.selenium.until.elementLocated(this.selenium.By.css('body')), timeout);
+    this.helpers.waitFor('html');
+
+    //const c = await body.getAttribute('class');
+    //console.log(c);
 });
 
 Then('I see title {string}', async function (expectedTitle) {

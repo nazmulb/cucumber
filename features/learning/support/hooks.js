@@ -27,6 +27,9 @@ After({tags: '@smoke'}, async function (scenario) {
     }
 
     if(this.isBrowser){
+        if(this.debug) console.log(this.isBrowser);
+        
+        await this.sleep(15000);
         await this.driver.quit();
     }
 });
