@@ -29,4 +29,4 @@ class AndroidDriver extends Driver {
     }
 }
 
-module.exports = Driver;
+module.exports = AndroidDriver;
