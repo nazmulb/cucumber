@@ -1,4 +1,11 @@
 module.exports = {
-    username: "nazmul",
-    password: "123"
-};
+    local: {
+        username: "nazmul",
+        password: "abc"    
+    },
+
+    prod: {
+        username: "nazmul",
+        password: "123"    
+    }
+}

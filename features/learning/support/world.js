@@ -31,10 +31,8 @@ class World {
         this.expect = expect;
         this.assert = assert;
 
-        this.screenshotPath = path.join("reports", "screenshots");
-        this.screenshot = new Screenshot();
-        this.screenshot.ensureDirectoryExists(this.screenshotPath);
-
+        this.screenshot = new Screenshot(this);
+        this.screenshot.ensureDirectoryExists();
 
         this.helpers = helpers._init(this);
 
