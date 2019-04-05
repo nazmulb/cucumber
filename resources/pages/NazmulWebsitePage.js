@@ -19,6 +19,8 @@ class NazmulWebsitePage extends Page {
      * Navigate to profile page and wait for the body element to be present
      */
     async navigateToProfilePage() {
+        console.log(this.world.data.user.password);
+
         const myprofile = NazmulWebsitePage.elements.myProfileMenu;
 
         await this.world.helper.waitFor(myprofile);

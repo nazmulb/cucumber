@@ -8,6 +8,7 @@ const Driver = require('./Driver');
 const Screenshot = require('./Screenshot');
 const Helper = require('./Helper');
 const PageFactory = require('../../resources/PageFactory');
+const data = require('../../resources/data');
 
 //Use dotenv to read .env vars into Node
 require('dotenv').config();
@@ -43,6 +44,7 @@ class World {
 
         this.helper = new Helper(this);
         this.pageFactory = new PageFactory(this);
+        this.data = data;
     }
     
     get isBrowser() {
