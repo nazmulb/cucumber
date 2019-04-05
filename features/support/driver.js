@@ -15,10 +15,10 @@ class Driver {
 
     /**
      * Factory
-     * @param {String} driverName - class name
+     * @param {String} name - name
      */
-    static create(driverName) {
-        const fileName = './drivers/'+_.capitalize(driverName)+'Driver.js';
+    static create(name) {
+        const fileName = './drivers/'+_.capitalize(name)+'Driver.js';
 
         try {
             const className = require(fileName);

@@ -7,7 +7,7 @@ const path = require('path');
 const Driver = require('./Driver');
 const Screenshot = require('./Screenshot');
 const Helper = require('./Helper');
-const nazmulWebsite = require('../../resources/page-objects/nazmul-website');
+const PageFactory = require('../../resources/PageFactory');
 
 //Use dotenv to read .env vars into Node
 require('dotenv').config();
@@ -42,8 +42,7 @@ class World {
         this.screenshot.ensureDirectoryExists();
 
         this.helper = new Helper(this);
-
-        this.page = {nazmulWebsite: nazmulWebsite};
+        this.pageFactory = new PageFactory(this);
     }
     
     get isBrowser() {

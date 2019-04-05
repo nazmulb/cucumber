@@ -1,17 +1,13 @@
 const { Given, When, Then } = require('cucumber');
 
-Given('I visit nazmul website', async function () {
-    await this.helper.loadPage(this.appUrl);
-});
-
 When('I click my profile link', async function () {
-    await this.page.nazmulWebsite.navigateToProfilePage(this);
+    await this.page.navigateToProfilePage();
 });
 
 When('I search for {string}', async function (searchQuery) {
-    await this.page.nazmulWebsite.preformSearch(this, searchQuery);
+    await this.page.preformSearch(searchQuery);
 });
 
 Then('I see title {string}', async function (expectedTitle) {
-    await this.page.nazmulWebsite.titleEquals(this, expectedTitle);
+    await this.page.titleEquals(expectedTitle);
 });
