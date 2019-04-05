@@ -43,6 +43,7 @@ class NazmulWebsitePage extends Page {
       await this.world.helper.scrollToElement(el);
       await el.sendKeys(searchQuery);
       await el.sendKeys(this.world.selenium.Key.ENTER);
+      await this.world.sleep(2000);
   }
 }
 

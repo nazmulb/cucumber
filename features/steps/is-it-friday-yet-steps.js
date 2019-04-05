@@ -1,4 +1,3 @@
-const Promise = require('bluebird');
 const { Given, When, Then } = require('cucumber');
 const Day = require('../../lib/Day');
 
