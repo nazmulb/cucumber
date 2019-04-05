@@ -18,6 +18,8 @@ class Page {
      * @param {string} expectedTitle - expected title to match
      */
     async titleEquals(expectedTitle) {
+        if(this.world.debug) console.log('titleEquals');
+
         const actualTitle = await this.world.driver.getTitle();
         this.world.expect(actualTitle).to.equal(expectedTitle);
     }

@@ -132,6 +132,7 @@ class Helper {
         if(this.world.debug) console.log('refresh');
 
         await this.world.driver.navigate().refresh();
+        await this.world.sleep(2000);
     }
 }
 

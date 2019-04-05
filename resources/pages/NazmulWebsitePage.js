@@ -19,6 +19,8 @@ class NazmulWebsitePage extends Page {
      * Navigate to profile page and wait for the body element to be present
      */
     async navigateToProfilePage() {
+        if(this.world.debug) console.log('navigateToProfilePage');
+
         const myprofile = NazmulWebsitePage.elements.myProfileMenu;
 
         await this.world.helper.waitFor(myprofile);
@@ -35,6 +37,8 @@ class NazmulWebsitePage extends Page {
    * @param {string} searchQuery - search query text
    */
   async preformSearch(searchQuery) {
+    if(this.world.debug) console.log('preformSearch');
+
       const searchInput = NazmulWebsitePage.elements.searchInput;
 
       await this.world.helper.waitFor(searchInput);
