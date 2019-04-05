@@ -8,9 +8,17 @@ class Page {
     constructor(world) {
         this.world = world;
     }
-
+    
     static get elements() {
         return {};
+    }
+
+    /**
+     * Get page specific url to navigate
+     * @returns {String} page url
+     */
+    pageUrl() {
+        return '/';
     }
 
     /**

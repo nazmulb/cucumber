@@ -16,6 +16,14 @@ class NazmulWebsitePage extends Page {
     }
 
     /**
+     * Get page specific url to navigate
+     * @returns {String} page url
+     */
+    pageUrl() {
+        return '/';
+    }
+
+    /**
      * Navigate to profile page and wait for the body element to be present
      */
     async navigateToProfilePage() {
