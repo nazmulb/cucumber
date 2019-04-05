@@ -1,3 +1,5 @@
+const chromedriver = require('chromedriver');
+const firefox = require('geckodriver');
 const driver = require('selenium-webdriver');
 
 const buildAndroidDriver = function () {
@@ -14,14 +16,25 @@ const buildAndroidDriver = function () {
 
 const buildChromeDriver = function() {
     return new driver.Builder()
-            .forBrowser("chrome")
-            .build();
+            .withCapabilities({
+                browserName: 'chrome',
+                javascriptEnabled: true,
+                acceptSslCerts: true,
+                chromeOptions: {
+                    args: ['start-maximized', 'disable-extensions']
+              },
+              path: chromedriver.path
+            }).build();
 };
   
 const buildFirefoxDriver = function() {
     return new driver.Builder()
-            .forBrowser("firefox")
-            .build();
+            .withCapabilities({
+                browserName: 'firefox',
+                javascriptEnabled: true,
+                acceptSslCerts: true,
+                'webdriver.firefox.bin': firefox.path
+            }).build();
 };
 
 const buildDriver = function(platform) {

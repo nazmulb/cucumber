@@ -26,6 +26,7 @@ class World {
         
         // browser driver instance
         this.driver = buildDriver(this.pf);
+        this.driver.manage().window().maximize();
 
         this.selenium = selenium;
         this.expect = expect;
