@@ -1,7 +1,7 @@
 const { Given, When, Then } = require('cucumber');
 
 Given('I visit nazmul website', async function () {
-    await this.helpers.loadPage(this.appUrl);
+    await this.helper.loadPage(this.appUrl);
 });
 
 When('I click my profile link', async function () {

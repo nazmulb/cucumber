@@ -12,13 +12,13 @@ module.exports = {
     navigateToProfilePage: async function (world) {
         const myprofile = this.elements.myProfileMenu;
 
-        await world.helpers.waitFor(myprofile);
-        var el = await world.helpers.findElement(myprofile);
+        await world.helper.waitFor(myprofile);
+        var el = await world.helper.findElement(myprofile);
         await el.click();
         await world.sleep(2000);
 
         // now wait for the body element to be present
-        await world.helpers.waitFor('body');
+        await world.helper.waitFor('body');
     },
 
     /**
@@ -29,10 +29,10 @@ module.exports = {
     preformSearch: async function (world, searchQuery) {
         const searchInput = this.elements.searchInput;
 
-        await world.helpers.waitFor(searchInput);
-        el = await world.helpers.findElement(searchInput);
+        await world.helper.waitFor(searchInput);
+        el = await world.helper.findElement(searchInput);
 
-        await world.helpers.scrollToElement(el);
+        await world.helper.scrollToElement(el);
         await el.sendKeys(searchQuery);
         await el.sendKeys(world.selenium.Key.ENTER);
     },

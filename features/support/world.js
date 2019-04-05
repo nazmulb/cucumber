@@ -4,18 +4,24 @@ const {expect, assert} = require('chai');
 const _ = require('lodash');
 const Promise = require('bluebird');
 const path = require('path');
-const {buildDriver} = require('./driver');
-const URL = require('./URL');
+const Driver = require('./Driver');
 const Screenshot = require('./Screenshot');
-const helpers = require('./helpers');
+const Helper = require('./Helper');
 const nazmulWebsite = require('../../resources/page-objects/nazmul-website');
-
 
 //Use dotenv to read .env vars into Node
 require('dotenv').config();
 
-// Using world we can add helper methods, or logging.
+/**
+ * Sharing code and Data between steps.
+ * Using world we can add helper methods, or logging.
+ */
 class World {
+    /**
+     * Instantiate the object
+     * @param {JSON} attach - attach anything
+     * @param {Command} parameters - sets the parameters as command
+     */
     constructor({attach, parameters}) {
         this.attach = attach;
         this.parameters = parameters;
@@ -25,7 +31,7 @@ class World {
         this.debug = (process.env.DEBUG == "true" ? true : false) || false;
         
         // browser driver instance
-        this.driver = buildDriver(this.pf);
+        this.driver = Driver.create(this.pf).build();
         this.driver.manage().window().maximize();
 
         this.selenium = selenium;
@@ -35,7 +41,7 @@ class World {
         this.screenshot = new Screenshot(this);
         this.screenshot.ensureDirectoryExists();
 
-        this.helpers = helpers._init(this);
+        this.helper = new Helper(this);
 
         this.page = {nazmulWebsite: nazmulWebsite};
     }
@@ -43,7 +49,6 @@ class World {
     get isBrowser() {
         return _.isFunction(this.driver.manage);
     }
-
     get platform() {
         return this.pf;
     }
@@ -57,10 +62,14 @@ class World {
     }
 
     get appUrl() {
-        const url = new URL;
-        return url.getAppUrlForEnv(this.env);
+        return this.helper.getAppUrlForEnv(this.env);
     }
 
+    /**
+     * Sleep
+     * @param {String} milliseconds - milli seconds
+     * @returns {Bluebird} return promise
+     */
     sleep(milliseconds){
         return Promise.delay(milliseconds);
     }
