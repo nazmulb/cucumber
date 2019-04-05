@@ -1,6 +1,6 @@
 const Promise = require('bluebird');
 const { Given, When, Then } = require('cucumber');
-const Day = require('../../../lib/learning/Day');
+const Day = require('../../lib/Day');
 
 Given('Today is {string}', async function (givenDay) {
     this.today = givenDay;

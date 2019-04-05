@@ -5,10 +5,10 @@ const _ = require('lodash');
 const Promise = require('bluebird');
 const path = require('path');
 const {buildDriver} = require('./driver');
-const URL = require('../../../lib/learning/URL');
-const Screenshot = require('../../../lib/learning/Screenshot');
-const helpers = require('../support/helpers');
-const nazmulWebsite = require('../../../resources/page-objects/nazmul-website');
+const URL = require('./URL');
+const Screenshot = require('./Screenshot');
+const helpers = require('./helpers');
+const nazmulWebsite = require('../../resources/page-objects/nazmul-website');
 
 
 //Use dotenv to read .env vars into Node

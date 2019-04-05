@@ -1,5 +1,5 @@
 const { Given, When, Then } = require('cucumber');
-const Color = require('../../../lib/learning/Color');
+const Color = require('../../lib/Color');
 
 Given('Initialise the all colors', async function () {
     this.color = new Color();
