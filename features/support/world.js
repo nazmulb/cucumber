@@ -2,13 +2,13 @@ const {setWorldConstructor} = require('cucumber');
 const selenium = require('selenium-webdriver');
 const {expect, assert} = require('chai');
 const _ = require('lodash');
+const requireDir = require('require-dir');
 const Promise = require('bluebird');
 const path = require('path');
 const Driver = require('./Driver');
 const Screenshot = require('./Screenshot');
 const Helper = require('./Helper');
 const PageFactory = require('../../resources/PageFactory');
-const data = require('../../resources/data');
 
 //Use dotenv to read .env vars into Node
 require('dotenv').config();
@@ -44,7 +44,7 @@ class World {
 
         this.helper = new Helper(this);
         this.pageFactory = new PageFactory(this);
-        this.data = data;
+        this.data = requireDir('../../resources/data', { recurse: true });
     }
     
     get isBrowser() {
