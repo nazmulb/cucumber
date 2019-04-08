@@ -4,25 +4,24 @@ const Page = require('./Page');
  * Nazmul Website Admin Page Class Methods
  */
 class NazmulWebsiteAdminPage extends Page {
-    /**
-     * Get page elements
-     * @returns {Object} page elements
-     */
-    static get elements() {
-        return {
-            userNameInput: '#usernameOrEmail',
-            continueButton: '#primary > div > main > div > div.wp-login__container > div > form > div.card.login__form > div.login__form-action > button'
-        };
-    }
-
+    
     /**
      * Get page specific url to navigate
      * @returns {String} page url
      */
-    pageUrl() {
-        if(this.world.debug) console.log('pageUrl');
-        
+    get url() {
         return '/wp-admin';
+    }
+
+    /**
+     * Get page elements
+     * @returns {Object} page elements
+     */
+    get elements() {
+        return {
+            userNameInput: '#usernameOrEmail',
+            continueButton: '#primary > div > main > div > div.wp-login__container > div > form > div.card.login__form > div.login__form-action > button'
+        };
     }
 
     /**
@@ -31,8 +30,8 @@ class NazmulWebsiteAdminPage extends Page {
     async preformLogin() {
         if(this.world.debug) console.log('preformLogin');
 
-        const userNameInput = NazmulWebsiteAdminPage.elements.userNameInput;
-        const continueButton = NazmulWebsiteAdminPage.elements.continueButton;
+        const userNameInput = this.elements.userNameInput;
+        const continueButton = this.elements.continueButton;
 
         await this.world.helper.waitFor(userNameInput);
         const uInput = await this.world.helper.findElement(userNameInput);

@@ -8,19 +8,11 @@ class NazmulWebsitePage extends Page {
      * Get page elements
      * @returns {Object} page elements
      */
-    static get elements() {
+    get elements() {
         return {
             myProfileMenu: '#pagebar > li.page_item.page-item-8 > a',
             searchInput: '#s'
         };
-    }
-
-    /**
-     * Get page specific url to navigate
-     * @returns {String} page url
-     */
-    pageUrl() {
-        return '/';
     }
 
     /**
@@ -29,7 +21,7 @@ class NazmulWebsitePage extends Page {
     async navigateToProfilePage() {
         if(this.world.debug) console.log('navigateToProfilePage');
 
-        const myprofile = NazmulWebsitePage.elements.myProfileMenu;
+        const myprofile = this.elements.myProfileMenu;
 
         await this.world.helper.waitFor(myprofile);
         const el = await this.world.helper.findElement(myprofile);
@@ -47,7 +39,7 @@ class NazmulWebsitePage extends Page {
   async preformSearch(searchQuery) {
     if(this.world.debug) console.log('preformSearch');
 
-      const searchInput = NazmulWebsitePage.elements.searchInput;
+      const searchInput = this.elements.searchInput;
 
       await this.world.helper.waitFor(searchInput);
       const el = await this.world.helper.findElement(searchInput);
