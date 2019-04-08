@@ -4,7 +4,6 @@ const {expect, assert} = require('chai');
 const _ = require('lodash');
 const requireDir = require('require-dir');
 const Promise = require('bluebird');
-const path = require('path');
 const Driver = require('./Driver');
 const Screenshot = require('./Screenshot');
 const Helper = require('./Helper');
