@@ -51,6 +51,6 @@ AfterAll(async function () {
     console.log("Execute after all hook.");
 
     setTimeout(() => {
-        Report().generate();
+        Report.generate();
     }, 1000)
 });
