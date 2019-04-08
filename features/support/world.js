@@ -7,7 +7,6 @@ const Promise = require('bluebird');
 const path = require('path');
 const Driver = require('./Driver');
 const Screenshot = require('./Screenshot');
-const Report = require('./Report');
 const Helper = require('./Helper');
 const PageFactory = require('../../resources/PageFactory');
 
@@ -41,9 +40,6 @@ class World {
         this.assert = assert;
 
         this.screenshot = new Screenshot(this);
-        this.screenshot.ensureDirectoryExists();
-
-        this.report = new Report(this);
 
         this.helper = new Helper(this);
         this.pageFactory = new PageFactory(this);

@@ -18,6 +18,8 @@ class Screenshot {
         this.screenshotPath = path.join("reports", "screenshots");
 
         if(this.world.debug) console.log('Screenshot:constructor');
+
+        this.ensureDirectoryExists();
     }
 
     /**
