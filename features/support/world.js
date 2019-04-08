@@ -7,6 +7,7 @@ const Promise = require('bluebird');
 const path = require('path');
 const Driver = require('./Driver');
 const Screenshot = require('./Screenshot');
+const Report = require('./Report');
 const Helper = require('./Helper');
 const PageFactory = require('../../resources/PageFactory');
 
@@ -24,7 +25,7 @@ class World {
      * @param {Command} parameters - sets the parameters as command
      */
     constructor({attach, parameters}) {
-        this.attach = attach;
+        this.attach = attach; // attaching screenshots to report
         this.parameters = parameters;
         this.pf = process.env.PLATFORM || "chrome";
         this.env = process.env.ENVIRONMENT || "local";
@@ -41,6 +42,8 @@ class World {
 
         this.screenshot = new Screenshot(this);
         this.screenshot.ensureDirectoryExists();
+
+        this.report = new Report(this);
 
         this.helper = new Helper(this);
         this.pageFactory = new PageFactory(this);

@@ -30,6 +30,8 @@ After({tags: '@smoke'}, async function (scenario) {
         }
     }
 
+    this.report.generate();
+
     if(this.isBrowser){
         if(this.debug) console.log('After Hook: '+this.isBrowser);
 
@@ -48,4 +50,5 @@ BeforeAll(async function () {
 // Multiple AfterAll hooks are executed in the reverse order that they are defined.
 AfterAll(async function () {
     //console.log("Execute after all hook.");
+    //Report.generate();
 });

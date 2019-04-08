@@ -42,6 +42,9 @@ class Screenshot {
     async create(fileName) {
         try {
             const data = await this.world.driver.takeScreenshot();
+            // Attaching screenshot to report
+            await this.world.attach(data, 'image/png');
+            
             const filePath = path.join(this.screenshotPath, fileName);
             const base64Data = data.replace(/^data:image\/png;base64,/, "");
            
