@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "./node_modules/.bin/cucumber-js -p progress -f json:reports/cucumber_report.json --tags \"@smoke\""
+    "test": "./node_modules/.bin/cucumber-js -p default -p html_report --tags \"@smoke\""
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,7 @@
   "dependencies": {
     "bluebird": "^3.5.3",
     "dotenv": "^7.0.0",
+    "is-generator": "^1.0.3",
     "lodash": "^4.17.11",
     "mkdirp": "^0.5.1",
     "require-dir": "^1.2.0"

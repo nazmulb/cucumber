@@ -34,7 +34,7 @@ After({tags: '@smoke'}, async function (scenario) {
     if(this.isBrowser){
         if(this.debug) console.log('After Hook: '+this.isBrowser);
 
-        //await this.sleep(5000);
+        await this.sleep(500);
         await this.driver.quit();
     }
 });

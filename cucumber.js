@@ -3,7 +3,10 @@
 // Users can define cucumber.js with profiles which are groups of command line arguments.
 
 module.exports = {
-    'default': '--format summary',
+    'default': 'test/features/ --require test/',
     dry: '--dry-run',
-    progress: '--format progress'
+    summary: '--format summary',
+    progress: '--format progress',
+    html_report: '-f json:reports/cucumber_report.json',
+    parallel: '--parallel 2'
 };
