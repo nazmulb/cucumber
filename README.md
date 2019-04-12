@@ -6,7 +6,7 @@ Cucumber is a tool that supports BDD. So let's talk about TDD and BDD.
 
 Test-Driven Development (TDD) is a software development technique where automated tests are written before the code. Developers use those tests to drive the development. 
 
-<img alt="TDD" src="https://raw.githubusercontent.com/nazmulb/cucumber/master/images/tdd.png" width="520px" />
+<img alt="TDD" src="https://raw.githubusercontent.com/nazmulb/cucumber/master/images/tdd.png" width="400px" />
 
 
 ## What is BDD?
