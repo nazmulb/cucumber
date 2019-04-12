@@ -21,3 +21,14 @@ Behavior Driven Development (BDD) is an extension to the concept of TDD, but ins
 - In BDD test are written in natural languages (e.g. English) so tests are written, maintained and understood by anyone as non-programmers (e.g. QA, Product Owner, etc).
 - BDD explains the behavior of an application for the end user while TDD focuses on how functionality is implemented. Changes on functionality can be accommodated with less impact in BDD as opposed to TDD.
 
+## What is Gherkin?
+
+Gherkin allows for test scripts to be written in a human readable format, which can then be shared between all of the stakeholders in the product development.
+
+It gives you the ability to remove logic details from behavior tests. Gherkin serves two purposes: serving as your product documentation and automated tests.
+
+Gherkin files typically have a `.feature` file extension that contain tests, written in the Gherkin language.
+
+## What is Cucumber?
+
+Gherkin is a simple syntax for natural language tests, and Cucumber is a testing framework for behavior driven development that can execute them.
