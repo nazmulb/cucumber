@@ -18,6 +18,6 @@ Behavior Driven Development (BDD) is an extension to the concept of TDD, but ins
 
 - The way the tests are written and structured is different.
 - In TDD tests are written using programming languages so the tests are written, maintained and understood by the developers who wrote the code they are testing.
-- In BDD test are written in natural language (e.g. English) so test are written, maintained and understood by anyone as non-programmers (e.g. QA, Product Owner, etc).
+- In BDD test are written in natural languages (e.g. English) so tests are written, maintained and understood by anyone as non-programmers (e.g. QA, Product Owner, etc).
 - BDD explains the behavior of an application for the end user while TDD focuses on how functionality is implemented. Changes on functionality can be accommodated with less impact in BDD as opposed to TDD.
 
