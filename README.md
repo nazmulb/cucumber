@@ -122,7 +122,7 @@ Add `cucumber` as a development dependency:
 npm install cucumber --save-dev
 ```
 
-### Step 3 - Create four new directories for features and step definitions:
+### Step 3 - Create four new directories for features, step definitions and support related codes:
 
 ```cmd
 mkdir test
