@@ -99,3 +99,77 @@ Given('I navigate to the {string} page', pageName => {
   this.pageName = pageName;
 });
 ```
+
+## Installation:
+
+As we are using JavaScript so please install <a href="http://nodejs.org">Node.js</a>.
+
+### Step 1 - Create an empty Cucumber project:
+
+We’ll start by creating a new directory and an empty Node.js project.
+
+```cmd
+mkdir cucumber_test
+cd cucumber_test
+npm init -y
+```
+
+### Step 2 - Install Cucumber.js:
+
+Add `cucumber` as a development dependency:
+
+```cmd
+npm install cucumber --save-dev
+```
+
+### Step 3 - Create four new directories for features and step definitions:
+
+```cmd
+mkdir test
+cd test
+mkdir features steps support
+```
+
+### Step 4 - `package.json` scripts to run Cucumber.js:
+
+By convention, all of your Gherkin files (`.feature` file extension) will be kept in the `features` directory, and if you don’t instruct it otherwise then Cucumber will look in the same directory for the JavaScript code (step definitions, support, hooks, setup, etc that have `.js` file extension) to execute as well.
+
+If you keep all of your Gherkin files in the directory `features` and all of your JavaScript code in `steps` and `support` then you could change the `test` section of `package.json` so it looks like this:
+
+```json
+{
+  "name": "cucumber_test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/cucumber-js ./test/features --require ./test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cucumber": "^5.1.0"
+  }
+}
+```
+
+The `--require` flag is including all the JavaScript files before executing features.
+
+### Step 5 - Verify Cucumber.js installation:
+
+To make sure everything works together correctly, let’s run Cucumber.
+
+```js
+npm test
+```
+
+You should see something like the following:
+
+```
+0 scenarios
+0 steps
+0m00.000s
+```
+
+Cucumber’s output is telling us that it didn’t find anything to run.
