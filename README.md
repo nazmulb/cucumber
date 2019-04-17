@@ -160,13 +160,13 @@ The `--require` flag is including all the JavaScript files before executing feat
 
 To make sure everything works together correctly, let’s run Cucumber.
 
-```js
+```cmd
 npm test
 ```
 
 You should see something like the following:
 
-```
+```cmd
 0 scenarios
 0 steps
 0m00.000s
