@@ -29,6 +29,14 @@ It gives you the ability to remove logic details from behavior tests. Gherkin se
 
 Gherkin files typically have a `.feature` file extension that contain tests, written in the Gherkin language.
 
+```
+Given I navigate to the "nazmul website" page
+When I click my profile link
+And I search for "Mac"
+Then I see title "Mac | Search Results | Nazmul Website"
+```
+Straight away we can see that this test tells us **what** to do and not **how** to do it. It is written in a language that makes sense to anyone reading it, and — importantly — that will most likely be correct no matter how the end product might be tweaked. The product UI could be changed completely, but as long as the functionality is equivalent then the Gherkin is still accurate.
+
 ## What is Cucumber?
 
 Gherkin is a simple syntax for natural language tests, and Cucumber is a testing framework for behavior driven development that can execute them.
@@ -60,3 +68,34 @@ Scenarios are then comprised of **steps**, which are ordered in a specific manne
 Ideally each scenario should be a single test case, so the number of When steps should be kept very small.
 
 Steps are entirely optional. If you have no need to set anything up at all, you might have no Given steps, for example.
+
+## What is Step Definitions?
+
+Step definitions map (or “glue”) each Gherkin step to programming code to carry out the action that should be performed by the step.
+
+Step definitions can be written in many programming languages. Here is an example using JavaScript:
+
+```js
+Given('I navigate to the {string} page', function (pageName) {
+    console.log('Page Name: ' + pageName);
+});
+```
+
+A step definition’s expression can either be a Regular Expression or a Cucumber Expression.
+
+```js
+Given(/I navigate to the (\w+) page/, function (pageName) {
+    console.log('Page Name: ' + pageName);
+});
+```
+
+Step definitions aren’t linked to a particular feature file or scenario. The file, class or package name of a step definition does not affect what Gherkin steps it will match. The only thing that matters is the step definition’s expression.
+
+A step definition can transfer state to a subsequent step definition by storing state in instance variables. Please note that if you use arrow functions, you won’t be able to share state between steps!
+
+```js
+Given('I navigate to the {string} page', pageName => {
+  // Don't do this. The value of "this" is the "global" object
+  this.pageName = pageName;
+});
+```
