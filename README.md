@@ -130,7 +130,7 @@ cd test
 mkdir features steps support
 ```
 
-### Step 4 - `package.json` scripts to run Cucumber.js:
+### Step 4 - Change `package.json` scripts to run Cucumber.js:
 
 By convention, all of your Gherkin files (`.feature` file extension) will be kept in the `features` directory, and if you don’t instruct it otherwise then Cucumber will look in the same directory for the JavaScript code (step definitions, support, hooks, setup, etc that have `.js` file extension) to execute as well.
 
