@@ -32,3 +32,23 @@ Gherkin files typically have a `.feature` file extension that contain tests, wri
 ## What is Cucumber?
 
 Gherkin is a simple syntax for natural language tests, and Cucumber is a testing framework for behavior driven development that can execute them.
+
+## What is the concept of features, scenarios and steps?
+
+In a Gherkin defined test, you have the concept of *features* and *scenarios*. These are analogous to test suites and test cases in other testing frameworks, allowing for a clean way to structure your tests.
+
+A *scenario* is literally just a single test. It should test exactly one thing in your application.
+
+A *feature* is a group of related scenarios. As such, it will test many related things in your application. Ideally the features in the Gherkin files will closely map on to the Features in the application — hence the name.
+
+Every Gherkin file contains exactly one feature, and every feature contains one or more scenarios.
+
+Scenarios are then comprised of *steps*, which are ordered in a specific manner:
+
+- **Given** – These steps are used to set up the initial state before you do your test.
+- **When** – These steps are the actual test that is to be executed.
+- **Then** – These steps are used to assert on the outcome of the test.
+
+Ideally each scenario should be a single test case, so the number of When steps should be kept very small.
+
+Steps are entirely optional. If you have no need to set anything up at all, you might have no Given steps, for example.
