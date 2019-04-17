@@ -33,6 +33,14 @@ Gherkin files typically have a `.feature` file extension that contain tests, wri
 
 Gherkin is a simple syntax for natural language tests, and Cucumber is a testing framework for behavior driven development that can execute them.
 
+## What is the advantages of Cucumber?
+
+- It is helpful to involve business stakeholders who can't easily read code.
+- Cucumber Testing focuses on end-user experience.
+- Style of writing tests allow for easier reuse of code in the tests.
+- Quick and easy set up and execution.
+- Efficient tool for testing.
+
 ## What is the concept of features, scenarios and steps?
 
 In a Gherkin defined test, you have the concept of *features* and *scenarios*. These are analogous to test suites and test cases in other testing frameworks, allowing for a clean way to structure your tests.
