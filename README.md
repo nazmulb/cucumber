@@ -82,7 +82,7 @@ Given('I navigate to the {string} page', function (pageName) {
 });
 ```
 
-A step definition’s expression can either be a Regular Expression or a Cucumber Expression.
+A step definition’s expression can either be a Regular Expression or a Cucumber Expression. If you prefer to use Regular Expressions, each *capture group* from the match will be passed as arguments to the step definition’s function.
 
 ```js
 Given(/I navigate to the (\w+) page/, function (pageName) {
@@ -190,12 +190,12 @@ Create an empty file called `test/features/is-it-friday-yet.feature` with the fo
 
 ```feature
 Feature: Is it Friday yet?
-  Everybody wants to know when it's Friday
+    Everybody wants to know when it's Friday
 
 Scenario: Sunday isn't Friday
-  Given today is Sunday
-  When I ask whether it's Friday yet
-  Then I should be told "Nope"
+    Given today is Sunday
+    When I ask whether it's Friday yet
+    Then I should be told "Nope"
 ```
 
 The first line of this file starts with the keyword `Feature:` followed by a name. It’s a good idea to use a name similar to the file name.
@@ -205,8 +205,6 @@ The second line is a brief description of the feature. Cucumber does not execute
 The fourth line, `Scenario: Sunday is not Friday` is a <a href="#what-is-the-concept-of-features-scenarios-and-steps">scenario</a>, which is a concrete example illustrating how the software should behave.
 
 The last three lines starting with `Given`, `When` and `Then` are the <a href="#what-is-the-concept-of-features-scenarios-and-steps">steps</a> of our scenario. This is what Cucumber will execute.
-
-### Step 3 - Run the cucumber test:
 
 Now that we have a scenario, we can ask Cucumber to execute it.
 
@@ -252,7 +250,7 @@ Warnings:
 0m00.000s
 ```
 
-### Step 4 - Create a step definitions file:
+### Step 3 - Create a step definitions file:
 
 Copy each of the three snippets for the undefined steps and paste them into newly created `test/steps/is-it-friday-yet-steps.js` <a href="#what-is-step-definitions">step definitions</a> file:
 
@@ -260,22 +258,20 @@ Copy each of the three snippets for the undefined steps and paste them into newl
 const { Given, When, Then } = require('cucumber');
 
 Given('today is Sunday', function () {
-  // Write code here that turns the phrase above into concrete actions
-  return 'pending';
+    // Write code here that turns the phrase above into concrete actions
+    return 'pending';
 });
 
 When('I ask whether it\'s Friday yet', function () {
-  // Write code here that turns the phrase above into concrete actions
-  return 'pending';
+    // Write code here that turns the phrase above into concrete actions
+    return 'pending';
 });
 
 Then('I should be told {string}', function (string) {
-  // Write code here that turns the phrase above into concrete actions
-  return 'pending';
+    // Write code here that turns the phrase above into concrete actions
+    return 'pending';
 });
 ```
-
-### Step 4 - Rerun the cucumber test:
 
 Run Cucumber again. This time the output is a little different:
 
@@ -294,3 +290,51 @@ Warnings:
 3 steps (1 pending, 2 skipped)
 0m00.001s
 ```
+
+Cucumber found our step definitions and executed them. They are currently marked as *pending*, which means we need to make them do something useful.
+
+### Step 4 - Change the step definition code:
+
+Change your step definition code to this:
+
+```js
+const { Given, When, Then } = require('cucumber');
+const {expect} = require('chai');
+
+function isItFriday(today) {
+    // We'll leave the implementation blank for now
+}
+
+Given('today is Sunday', function () {
+    this.today = 'Sunday';
+});
+
+When('I ask whether it\'s Friday yet', function () {
+    this.actualAnswer = isItFriday(this.today);
+});
+
+Then('I should be told {string}', function (expectedAnswer) {
+    expect(this.actualAnswer).to.equal(expectedAnswer);
+});
+```
+
+Run Cucumber again:
+
+```cmd
+..F
+
+Failures:
+
+1) Scenario: Sunday isn't Friday # test/features/is-it-friday-yet.feature:4
+   ✔ Given today is Sunday # test/steps/is-it-friday-yet-steps.js:8
+   ✔ When I ask whether it's Friday yet # test/steps/is-it-friday-yet-steps.js:12
+   ✖ Then I should be told "Nope" # test/steps/is-it-friday-yet-steps.js:16
+       AssertionError: expected undefined to equal 'Nope'
+           at World.<anonymous> (/Volumes/MyComputer/projects/cucumber_test/test/steps/is-it-friday-yet-steps.js:17:34)
+
+1 scenario (1 failed)
+3 steps (1 failed, 2 passed)
+0m00.005s
+```
+
+That’s progress! The first two steps are passing, but the last one is failing.
