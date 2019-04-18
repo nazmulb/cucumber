@@ -375,3 +375,120 @@ Run Cucumber again:
 ```
 
 Congratulations! You’ve got your first green Cucumber scenario.
+
+### Step 6 - Update the feature file to add another scenario:
+
+Update the `is-it-friday-yet.feature` file:
+
+```feature
+Feature: Is it Friday yet?
+    Everybody wants to know when it's Friday
+
+Scenario: Sunday isn't Friday
+    Given today is Sunday
+    When I ask whether it's Friday yet
+    Then I should be told "No"
+
+Scenario: Friday is Friday
+    Given today is Friday
+    When I ask whether it's Friday yet
+    Then I should be told "Yes"
+```
+
+### Step 7 - Update the step definition code:
+
+We’ll need to add a step definition to set `today` to “Friday”:
+
+```js
+const { Given, When, Then } = require('cucumber');
+const {expect} = require('chai');
+
+function isItFriday(today) {
+    return 'No';
+}
+
+Given('today is Sunday', function () {
+    this.today = 'Sunday';
+});
+
+Given('today is Friday', function () {
+    this.today = 'Friday';
+});
+
+When('I ask whether it\'s Friday yet', function () {
+    this.actualAnswer = isItFriday(this.today);
+});
+
+Then('I should be told {string}', function (expectedAnswer) {
+    expect(this.actualAnswer).to.equal(expectedAnswer);
+});
+```
+
+When we run this test, it will fail.
+
+```cmd
+.....F
+
+Failures:
+
+1) Scenario: Friday is Friday # test/features/is-it-friday-yet.feature:9
+   ✔ Given today is Friday # test/steps/is-it-friday-yet-steps.js:12
+   ✔ When I ask whether it's Friday yet # test/steps/is-it-friday-yet-steps.js:16
+   ✖ Then I should be told "Yes" # test/steps/is-it-friday-yet-steps.js:20
+       AssertionError
+           + expected - actual
+
+           -No
+           +Yes
+       
+           at World.<anonymous> (/Volumes/MyComputer/projects/cucumber_test/test/steps/is-it-friday-yet-steps.js:21:34)
+
+2 scenarios (1 failed, 1 passed)
+6 steps (1 failed, 5 passed)
+0m00.004s
+```
+
+That is because we haven’t implemented the logic yet! Let’s do that next.
+
+### Step 8 - Make it pass:
+
+We should update our statement to actually evaluate whether or not `today` is equal to "Friday".
+
+```js
+const { Given, When, Then } = require('cucumber');
+const {expect} = require('chai');
+
+function isItFriday(today) {
+    if (today === "Friday") {
+        return "Yes"; 
+    } else {
+        return "No";
+    }
+}
+
+Given('today is Sunday', function () {
+    this.today = 'Sunday';
+});
+
+Given('today is Friday', function () {
+    this.today = 'Friday';
+});
+
+When('I ask whether it\'s Friday yet', function () {
+    this.actualAnswer = isItFriday(this.today);
+});
+
+Then('I should be told {string}', function (expectedAnswer) {
+    expect(this.actualAnswer).to.equal(expectedAnswer);
+});
+```
+
+Run Cucumber again:
+
+```cmd
+......
+
+2 scenarios (2 passed)
+6 steps (6 passed)
+0m00.002s
+```
