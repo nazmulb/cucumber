@@ -186,14 +186,22 @@ npm install chai --save-dev
 
 ### Step 2 - Create a feature file:
 
-Create an empty file called `test/features/is_it_friday_yet.feature` with the following content:
+Create an empty file called `test/features/is-it-friday-yet.feature` with the following content:
 
 ```feature
-  Feature: Is it Friday yet?
+Feature: Is it Friday yet?
   Everybody wants to know when it's Friday
 
-  Scenario: Sunday isn't Friday
-    Given today is Sunday
-    When I ask whether it's Friday yet
-    Then I should be told "Nope"
+Scenario: Sunday isn't Friday
+  Given today is Sunday
+  When I ask whether it's Friday yet
+  Then I should be told "Nope"
 ```
+
+The first line of this file starts with the keyword `Feature:` followed by a name. It’s a good idea to use a name similar to the file name.
+
+The second line is a brief description of the feature. Cucumber does not execute this line, it’s just documentation.
+
+The fourth line, `Scenario: Sunday is not Friday` is a <a href="#what-is-the-concept-of-features-scenarios-and-steps">scenario</a>, which is a concrete example illustrating how the software should behave.
+
+The last three lines starting with `Given`, `When` and `Then` are the <a href="#what-is-the-concept-of-features-scenarios-and-steps">steps</a> of our scenario. This is what Cucumber will execute.
