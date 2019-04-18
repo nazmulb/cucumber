@@ -128,6 +128,7 @@ npm install cucumber --save-dev
 mkdir test
 cd test
 mkdir features steps support
+cd ..
 ```
 
 ### Step 4 - Change `package.json` scripts to run Cucumber.js:
@@ -173,3 +174,25 @@ You should see something like the following:
 ```
 
 Cucumber’s output is telling us that it didn’t find anything to run.
+
+## Write your first cucumber test:
+
+### Step 1 - Install Chai assertion library:
+
+```cmd
+npm install chai --save-dev
+```
+
+### Step 2 - Create a feature file:
+
+Create an empty file called `test/features/is_it_friday_yet.feature` with the following content:
+
+```feature
+  Feature: Is it Friday yet?
+  Everybody wants to know when it's Friday
+
+  Scenario: Sunday isn't Friday
+    Given today is Sunday
+    When I ask whether it's Friday yet
+    Then I should be told "Nope"
+```
