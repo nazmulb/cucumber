@@ -195,7 +195,7 @@ Feature: Is it Friday yet?
 Scenario: Sunday isn't Friday
     Given today is Sunday
     When I ask whether it's Friday yet
-    Then I should be told "Nope"
+    Then I should be told "No"
 ```
 
 The first line of this file starts with the keyword `Feature:` followed by a name. It’s a good idea to use a name similar to the file name.
@@ -236,7 +236,7 @@ Warnings:
            return 'pending';
          });
        
-   ? Then I should be told "Nope"
+   ? Then I should be told "No"
        Undefined. Implement with the following snippet:
 
          Then('I should be told {string}', function (string) {
@@ -284,7 +284,7 @@ Warnings:
    ? Given today is Sunday # test/steps/is-it-friday-yet-steps.js:3
        Pending
    - When I ask whether it's Friday yet # test/steps/is-it-friday-yet-steps.js:8
-   - Then I should be told "Nope" # test/steps/is-it-friday-yet-steps.js:13
+   - Then I should be told "No" # test/steps/is-it-friday-yet-steps.js:13
 
 1 scenario (1 pending)
 3 steps (1 pending, 2 skipped)
@@ -328,8 +328,8 @@ Failures:
 1) Scenario: Sunday isn't Friday # test/features/is-it-friday-yet.feature:4
    ✔ Given today is Sunday # test/steps/is-it-friday-yet-steps.js:8
    ✔ When I ask whether it's Friday yet # test/steps/is-it-friday-yet-steps.js:12
-   ✖ Then I should be told "Nope" # test/steps/is-it-friday-yet-steps.js:16
-       AssertionError: expected undefined to equal 'Nope'
+   ✖ Then I should be told "No" # test/steps/is-it-friday-yet-steps.js:16
+       AssertionError: expected undefined to equal 'No'
            at World.<anonymous> (/Volumes/MyComputer/projects/cucumber_test/test/steps/is-it-friday-yet-steps.js:17:34)
 
 1 scenario (1 failed)
@@ -338,3 +338,40 @@ Failures:
 ```
 
 That’s progress! The first two steps are passing, but the last one is failing.
+
+### Step 5 - Change code to make the scenario pass:
+
+Let’s do the simplest possible thing to make the scenario pass. In this case, that’s simply to make our function return `No`:
+
+```js
+const { Given, When, Then } = require('cucumber');
+const {expect} = require('chai');
+
+function isItFriday(today) {
+    return 'No';
+}
+
+Given('today is Sunday', function () {
+    this.today = 'Sunday';
+});
+
+When('I ask whether it\'s Friday yet', function () {
+    this.actualAnswer = isItFriday(this.today);
+});
+
+Then('I should be told {string}', function (expectedAnswer) {
+    expect(this.actualAnswer).to.equal(expectedAnswer);
+});
+```
+
+Run Cucumber again:
+
+```cmd
+...
+
+1 scenario (1 passed)
+3 steps (3 passed)
+0m00.003s
+```
+
+Congratulations! You’ve got your first green Cucumber scenario.
