@@ -214,7 +214,7 @@ Now that we have a scenario, we can ask Cucumber to execute it.
 npm test
 ```
 
-Cucumber is telling us we have one `undefined` scenario and three `undefined` steps because we didn't write matching step definitions to execute the test. It’s also suggesting some snippets of code that we can use to define these steps:
+Cucumber is telling us we have one `undefined` scenario and three `undefined` steps because we didn't write matching <a href="#what-is-step-definitions">step definitions</a> to execute the test. It’s also suggesting some snippets of code that we can use to define these steps:
 
 ```cmd
 UUU
