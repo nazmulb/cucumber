@@ -205,3 +205,92 @@ The second line is a brief description of the feature. Cucumber does not execute
 The fourth line, `Scenario: Sunday is not Friday` is a <a href="#what-is-the-concept-of-features-scenarios-and-steps">scenario</a>, which is a concrete example illustrating how the software should behave.
 
 The last three lines starting with `Given`, `When` and `Then` are the <a href="#what-is-the-concept-of-features-scenarios-and-steps">steps</a> of our scenario. This is what Cucumber will execute.
+
+### Step 3 - Run the cucumber test:
+
+Now that we have a scenario, we can ask Cucumber to execute it.
+
+```cmd
+npm test
+```
+
+Cucumber is telling us we have one `undefined` scenario and three `undefined` steps because we didn't write matching step definitions to execute the test. It’s also suggesting some snippets of code that we can use to define these steps:
+
+```cmd
+UUU
+
+Warnings:
+
+1) Scenario: Sunday isn't Friday # test/features/is-it-friday-yet.feature:4
+   ? Given today is Sunday
+       Undefined. Implement with the following snippet:
+
+         Given('today is Sunday', function () {
+           // Write code here that turns the phrase above into concrete actions
+           return 'pending';
+         });
+       
+   ? When I ask whether it's Friday yet
+       Undefined. Implement with the following snippet:
+
+         When('I ask whether it\'s Friday yet', function () {
+           // Write code here that turns the phrase above into concrete actions
+           return 'pending';
+         });
+       
+   ? Then I should be told "Nope"
+       Undefined. Implement with the following snippet:
+
+         Then('I should be told {string}', function (string) {
+           // Write code here that turns the phrase above into concrete actions
+           return 'pending';
+         });
+       
+
+1 scenario (1 undefined)
+3 steps (3 undefined)
+0m00.000s
+```
+
+### Step 4 - Create a step definitions file:
+
+Copy each of the three snippets for the undefined steps and paste them into newly created `test/steps/is-it-friday-yet-steps.js` <a href="#what-is-step-definitions">step definitions</a> file:
+
+```js
+const { Given, When, Then } = require('cucumber');
+
+Given('today is Sunday', function () {
+  // Write code here that turns the phrase above into concrete actions
+  return 'pending';
+});
+
+When('I ask whether it\'s Friday yet', function () {
+  // Write code here that turns the phrase above into concrete actions
+  return 'pending';
+});
+
+Then('I should be told {string}', function (string) {
+  // Write code here that turns the phrase above into concrete actions
+  return 'pending';
+});
+```
+
+### Step 4 - Rerun the cucumber test:
+
+Run Cucumber again. This time the output is a little different:
+
+```cmd
+P--
+
+Warnings:
+
+1) Scenario: Sunday isn't Friday # test/features/is-it-friday-yet.feature:4
+   ? Given today is Sunday # test/steps/is-it-friday-yet-steps.js:3
+       Pending
+   - When I ask whether it's Friday yet # test/steps/is-it-friday-yet-steps.js:8
+   - Then I should be told "Nope" # test/steps/is-it-friday-yet-steps.js:13
+
+1 scenario (1 pending)
+3 steps (1 pending, 2 skipped)
+0m00.001s
+```
