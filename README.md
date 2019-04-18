@@ -29,12 +29,13 @@ It gives you the ability to remove logic details from behavior tests. Gherkin se
 
 Gherkin files typically have a `.feature` file extension that contain tests, written in the Gherkin language.
 
-```
+```feature
 Given I navigate to the "nazmul website" page
 When I click my profile link
 And I search for "Mac"
 Then I see title "Mac | Search Results | Nazmul Website"
 ```
+
 Straight away we can see that this test tells us **what** to do and not **how** to do it. It is written in a language that makes sense to anyone reading it, and — importantly — that will most likely be correct no matter how the end product might be tweaked. The product UI could be changed completely, but as long as the functionality is equivalent then the Gherkin is still accurate.
 
 ## What is Cucumber?
