@@ -686,8 +686,49 @@ For <a href="https://cucumber.io/docs/cucumber/api/#tags">more info</a>
 
 ## A sample Project using Cucumber JS and Selenium-Webdriver for e2e Test Automation:
 
-TODO
+### Overview:
+
+We need the following to have a browser based e2e testing using Cucumber JS:
+
+- <a href="https://github.com/cucumber/cucumber-js">Cucumber JS</a>
+- <a href="https://www.npmjs.com/package/chai">Chai</a>
+- <a href="https://docs.seleniumhq.org/docs/03_webdriver.jsp#setting-up-a-selenium-webdriver-project">Selenium-Webdriver</a>
+- <a href="https://www.npmjs.com/package/cucumber-html-reporter">Cucumber-Html-Reporter</a>
+
+### Setup:
+
+Please clone this repo and run the following commands:
+
+```
+git clone git@github.com:nazmulb/cucumber.git
+npm install
+```
+
+### Environment Variables:
+
+- **ENVIRONMENT** - (string) test environment to target - `local` or `prod`.
+- **PLATFORM** - (string) browser name - `chrome` or `firefox`.
+- **DEFAULT_TIMEOUT** - (int) timeout after milliseconds.
+- **DEBUG** - (bool) if you need to see the logs - `true` or `false`.
+
+### Running Tests:
+
+Environment variables are a big part of configuration how to run the tests
+
+Examples:
+
+```cmd
+ENVIRONMENT=prod PLATFORM=chrome DEBUG=true npm test
+```
+
+or
+
+```cmd
+npm test
+```
+
+### Test report:
+
+<img alt="Report" src="https://raw.githubusercontent.com/nazmulb/cucumber/master/images/report.png" width="900px" />
 
 Happy learning :)
-
-
