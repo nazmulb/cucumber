@@ -492,3 +492,68 @@ Run Cucumber again:
 6 steps (6 passed)
 0m00.002s
 ```
+
+### Step 9 - Using Example:
+
+Let's update the `is-it-friday-yet.feature` file. We will go from `Scenario` to `Scenario Outline` when we start using multiple `Examples`.
+
+```feature
+Feature: Is it Friday yet?
+  Everybody wants to know when it's Friday
+
+  Scenario Outline: Today is or is not Friday
+    Given today is "<day>"
+    When I ask whether it's Friday yet
+    Then I should be told "<answer>"
+
+  Examples:
+    | day            | answer |
+    | Friday         | Yes   |
+    | Sunday         | No   |
+    | anything else! | No   |
+```
+
+The `Scenario Outline` keyword can be used to run the same `Scenario` multiple times, with different combinations of values.
+
+A `Scenario Outline` must contain an `Examples` section. The `Scenario Outline` is run once for each row in the `Examples` section beneath it (not counting the first header row).
+
+### Step 10 - Update the code:
+
+We need to replace the step definitions for `today is Sunday` and `today is Friday` with one step definition that takes the value of `<day>` as a String. Update the `is-it-friday-yet-steps.js` file as follows:
+
+```js
+const { Given, When, Then } = require('cucumber');
+const {expect} = require('chai');
+
+function isItFriday(today) {
+    if (today === "Friday") {
+        return "Yes"; 
+    } else {
+        return "No";
+    }
+}
+
+Given('today is {string}', function (givenDay) {
+    this.today = givenDay;
+});
+
+When('I ask whether it\'s Friday yet', function () {
+    this.actualAnswer = isItFriday(this.today);
+});
+
+Then('I should be told {string}', function (expectedAnswer) {
+    expect(this.actualAnswer).to.equal(expectedAnswer);
+});
+```
+
+Run Cucumber again:
+
+```cmd
+.........
+
+3 scenarios (3 passed)
+9 steps (9 passed)
+0m00.005s
+```
+
+**Note:** We should do some refactoring by moving the `isItFriday` function out from the test code into lib or helper.
