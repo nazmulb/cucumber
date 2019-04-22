@@ -557,3 +557,67 @@ Run Cucumber again:
 ```
 
 **Note:** We should do some refactoring by moving the `isItFriday` function out from the test code into lib or helper.
+
+## Gherkin & Cucumber Reference:
+
+### And, But:
+
+If you have several `Given`’s, `When`’s, or `Then`s, you could write:
+
+```feature
+Example: Multiple Givens
+    Given one thing
+    Given another thing
+    Given yet another thing
+    When I open my eyes
+    Then I should see something
+    Then I shouldn't see something else
+```
+Or, you could make it read more fluidly by writing:
+
+```feature
+Example: Multiple Givens
+    Given one thing
+    And another thing
+    And yet another thing
+    When I open my eyes
+    Then I should see something
+    But I shouldn't see something else
+```
+
+### Background:
+
+Occasionally you’ll find yourself repeating the same `Given` steps in all of the scenarios in a feature. A `Background` is run before *each* scenario In your feature file, put the `Background` before the first `Scenario`.
+
+For example:
+
+```feature
+Feature: Addition
+
+  Scenario: 1 + 0
+   Given I start with 1
+   When I add 0
+   Then I end up with 1
+
+  Scenario: 1 + 1
+   Given I start with 1
+   When I add 1
+   Then I end up with 2
+```
+
+We can use `Background` to have a common `Given` steps for all of the scenarios:
+
+```feature
+Feature: Addition
+
+  Background:
+    Given I start with 1
+
+  Scenario: 1 + 0
+    When I add 0
+    Then I end up with 1
+
+  Scenario: 1 + 1
+    When I add 1
+    Then I end up with 2
+```
