@@ -605,7 +605,7 @@ Feature: Addition
    Then I end up with 2
 ```
 
-We can use `Background` to have a common `Given` steps for all of the scenarios:
+We can use `Background` to have common `Given` steps for all of the scenarios:
 
 ```feature
 Feature: Addition
@@ -621,3 +621,73 @@ Feature: Addition
     When I add 1
     Then I end up with 2
 ```
+### Data Tables:
+
+<a href="https://www.sitepoint.com/bdd-javascript-cucumber-gherkin/">TODO</a>
+
+### Tags:
+
+Tags are a great way to organise your features and scenarios. A feature or scenario or can have as many tags as you like. Just separate them with spaces:
+
+```feature
+@billing @bicker
+Feature: Verify billing
+
+  @important
+  Scenario: Missing product description
+    Given hello
+```
+
+Tags can be placed above `Feature`, `Scenario`, `Scenario Outline` and `Examples` Gherkin elements. Tags are inherited by child elements.
+
+```cmd
+# You can tell Cucumber to only run scenarios with a particular tag
+./node_modules/.bin/cucumber.js --tags "@smoke and @fast"
+```
+
+```cmd
+# You can tell Cucumber to ignore scenarios with a particular tag
+./node_modules/.bin/cucumber.js --tags "not @smoke"
+```
+
+```cmd
+# You can run your single feature file
+./node_modules/.bin/cucumber.js --spec ./test/features/is-it-friday-yet.feature
+```
+
+For <a href="https://cucumber.io/docs/cucumber/api/#tags">more info</a>
+
+### Hooks:
+
+<a href="https://cucumber.io/docs/cucumber/api/#hooks">TODO</a>
+
+
+## Cucumber Configuration:
+
+### Custom Parameter Types:
+
+<a href="https://cucumber.io/docs/cucumber/cucumber-expressions/#custom-parameter-types">TODO</a>
+
+### Profiles:
+
+<a href="https://cucumber.io/docs/cucumber/configuration/">TODO</a>
+
+## Sharing state between steps:
+
+### World Object:
+
+<a href="https://cucumber.io/docs/cucumber/state/#sharing-state-between-steps">TODO</a>
+
+## Browser Automation:
+
+### Selenium WebDriver:
+
+<a href="https://cucumber.io/docs/guides/browser-automation/#selenium-webdriver">TODO</a>
+
+## A sample Project using Cucumber JS and Selenium-Webdriver for e2e Test Automation:
+
+TODO
+
+Happy learning :)
+
+
