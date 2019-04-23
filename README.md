@@ -639,7 +639,35 @@ Feature: Addition
 ```
 ### Data Tables:
 
-<a href="https://www.sitepoint.com/bdd-javascript-cucumber-gherkin/">TODO</a>
+`Data Tables` can be used as a way of providing tables of data, or structured input, or many other things.
+
+Example:
+
+```feature
+Scenario: Add numbers
+    Given I start with 0
+    When I add the following numbers:
+        | 1 |
+        | 2 |
+        | 3 |
+        | 4 |
+    Then I end up with 10
+```
+
+For this simple example, the step will look something like this:
+
+```js
+When('I add the following numbers:', function (table) {
+    this.actualAnswer = table.raw()
+            .map(row => row[0])
+            .map(v => parseInt(v))
+            .reduce((current, next) => current + next, this.actualAnswer);
+});
+```
+
+The `table` parameter we are provided is a `DataTable` object, which has a `raw` method on it that you can call. This method returns a 2D array of all the values in the data table.
+
+For <a href="https://github.com/cucumber/cucumber-js/blob/master/features/data_tables.feature">more info</a>
 
 ### Tags:
 
