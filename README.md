@@ -703,8 +703,75 @@ For <a href="https://cucumber.io/docs/cucumber/api/#tags">more info</a>
 
 ### Hooks:
 
-<a href="https://cucumber.io/docs/cucumber/api/#hooks">TODO</a>
+Hooks are blocks of code that can run at various points in the Cucumber execution cycle. They are typically used for setup and teardown of the environment before and after each scenario.
 
+#### Before:
+
+`Before` hooks run before the first step of each scenario. Only use a `Before` hook for low-level logic such as starting a browser or deleting data from a database. Multiple `Before` hooks are executed in the order that they are defined.
+
+You can declare hooks in `test/support/hooks.js`:
+```js
+const { Before, After, Status, BeforeAll, AfterAll } = require('cucumber');
+
+Before(async function () {
+    this.count = 0; // reset the count for every scenario. 
+});
+```
+
+#### After:
+
+`After` hooks run after the last step of each scenario, even when steps are `failed`, `undefined`, `pending`, or `skipped`. The `scenario` parameter is optional, but if you use it, you can inspect the status of the scenario. Multiple `After` hooks are executed in the **reverse** order that they are defined.
+
+```js
+After(async function (scenario) {
+    if (scenario.result.status === Status.FAILED) {
+        try{
+            const data = await this.driver.takeScreenshot();
+            // Attaching screenshot to report
+            await this.attach(data, 'image/png');
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    await this.driver.quit();
+});
+```
+
+#### BeforeAll:
+
+Defines a hook which is run before all scenarios.
+
+```js
+BeforeAll(async function () {
+});
+```
+
+#### AfterAll:
+
+Defines a hook which is run after all scenarios have completed.
+
+```js
+AfterAll(async function () {
+    setTimeout(() => {
+        Report.generate(); // Genetare HTML report
+    }, 1000)
+});
+```
+
+#### Tagged hooks:
+
+Hooks can be conditionally selected for execution based on the tags of the scenario.
+
+```js
+Before(async function () {
+    // This hook will be executed before all scenarios
+});
+
+Before({tags: '@smoke'}, async function () {
+    // This hook will be executed before scenarios tagged with @smoke
+});
+```
 
 ## Cucumber Configuration:
 
