@@ -777,7 +777,30 @@ Before({tags: '@smoke'}, async function () {
 
 ### Custom Parameter Types:
 
-<a href="https://cucumber.io/docs/cucumber/cucumber-expressions/#custom-parameter-types">TODO</a>
+Text between curly braces reference a parameter type. Cucumber comes with `{int}`, `{float}`, `{word}`, `{string}` and `{}` built-in parameter types. We can create our own custom parameter types:
+
+```js
+When('I pick a {color}', async function (color) {
+    console.log(color);
+});
+```
+
+The recommended location to define custom parameter types, would be in `test/support/types.js`:
+
+```js
+const { defineParameterType } = require('cucumber');
+
+const colorRegExp = /white|red|green|blue|yellow/;
+
+// Define a new parameter type and optionally convert an output parameter into something else.
+defineParameterType({
+    name: 'color',
+    regexp: colorRegExp,
+    transformer: s => s.toUpperCase()
+  });
+```
+
+For <a href="https://cucumber.io/docs/cucumber/cucumber-expressions/#custom-parameter-types">more info</a>
 
 ### Profiles:
 
