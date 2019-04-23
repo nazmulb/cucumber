@@ -101,6 +101,22 @@ Given('I navigate to the {string} page', pageName => {
 });
 ```
 
+## Who Does What?
+
+Who should be writing Gherkin documents, and who should write step definitions?
+
+Product owners, business analysts, programmers and testers are often confused about who should take on what responsibilities.
+
+### The Three Amigos:
+
+*The Three Amigos* is a meeting that takes user stories and turns them into clean, thorough Gherkin scenarios. It involves three voices (at least):
+
+- **The product owner** - This person is most concerned with the scope of the application. The product owner is responsible for deciding the acceptance criteria with examples.
+- **The tester** - This person will be generating lots of Scenarios, and lots of edge cases.
+- **The developer** - This person will add the Step definitions of the Scenarios.
+
+These conversations can produce great tests, because each amigo sees the product from a different perspective. For this reason it is *essential* that all of these roles have conversations to discover examples together by using <a href="https://cucumber.io/blog/example-mapping-introduction/">Example Mapping</a> technique.
+
 ## Installation:
 
 As we are using JavaScript so please install <a href="http://nodejs.org">Node.js</a>.
