@@ -859,10 +859,11 @@ setWorldConstructor(World);
 
 Cucumber is not a browser automation tool, but it works well with Selenium WebDriver.
 
-Let's install Selenium WebDriver:
+Let's install Selenium WebDriver and browser driver:
 
 ```cmd
 npm install selenium-webdriver --save-dev
+npm install chromedriver --save-dev
 ```
 
 `test/support/world.js`:
@@ -893,6 +894,16 @@ class World {
 setWorldConstructor(World);
 ```
 
+`test/support/hooks.js`:
+
+```js
+const { After } = require('cucumber');
+
+After(function (scenario) {
+    this.driver.quit();
+});
+```
+
 `test/features/nazmul-website.feature`:
 
 ```feature
@@ -912,9 +923,10 @@ Given('I visit Nazmul website', function () {
     this.driver.get('http://nazmulb.wordpress.com');
 });
 
-Then('Then I see title {string}', function (expectedTitle) {
+Then('I see title {string}', function (expectedTitle) {
+    self = this;
     this.driver.getTitle().then(function (actualTitle) {
-        this.expect(actualTitle).to.equal(expectedTitle);
+        self.expect(actualTitle).to.equal(expectedTitle);
     });
 });
 ```
