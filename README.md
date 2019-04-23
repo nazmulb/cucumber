@@ -777,7 +777,7 @@ Before({tags: '@smoke'}, async function () {
 
 ### Custom Parameter Types:
 
-Text between curly braces reference a parameter type. Cucumber comes with `{int}`, `{float}`, `{word}`, `{string}` and `{}` built-in parameter types. We can create our own custom parameter types:
+Text between curly braces reference a parameter type. Cucumber comes with `{int}`, `{float}`, `{word}`, `{string}` and `{}` **built-in** parameter types. We can create our own custom parameter types:
 
 ```js
 When('I pick a {color}', async function (color) {
@@ -803,6 +803,25 @@ defineParameterType({
 For <a href="https://cucumber.io/docs/cucumber/cucumber-expressions/#custom-parameter-types">more info</a>
 
 ### Profiles:
+
+In order to prevent users from having to enter the options they use every time. Users can define `cucumber.js` at the root of the project with profiles which are **groups of command line arguments**.
+
+```js
+module.exports = {
+    'default': 'test/features/ --require test/',
+    dry: '--dry-run',
+    summary: '--format summary',
+    progress: '--format progress',
+    html_report: '--format json:reports/cucumber_report.json',
+    parallel: '--parallel 2'
+};
+```
+
+Now from CLI we can run the following:
+
+```cmd
+./node_modules/.bin/cucumber-js -p default -p html_report --tags \"@smoke\"
+```
 
 <a href="https://cucumber.io/docs/cucumber/configuration/">TODO</a>
 
