@@ -823,19 +823,103 @@ Now from CLI we can run the following:
 ./node_modules/.bin/cucumber-js -p default -p html_report --tags \"@smoke\"
 ```
 
-<a href="https://cucumber.io/docs/cucumber/configuration/">TODO</a>
-
 ## Sharing state between steps:
 
-### World Object:
+### World:
 
-<a href="https://cucumber.io/docs/cucumber/state/#sharing-state-between-steps">TODO</a>
+Cucumber JS has a concept of the `World` which is using to sharing the code and data between steps. All of the step definitions, hooks and event handlers have access to the `World` by accessing the `this` parameter. Using world we can add helper methods, or logging.
+
+The recommended location to define `World`, would be in `test/support/world.js`:
+
+```js
+const {setWorldConstructor} = require('cucumber');
+const {expect, assert} = require('chai');
+
+class World {
+    /**
+     * Instantiate the object
+     * @param {JSON} attach - attach anything
+     * @param {Command} parameters - sets the parameters as command
+     */
+    constructor({attach, parameters}) {
+        this.attach = attach; // attaching screenshots to report
+        this.parameters = parameters;
+
+        this.expect = expect;
+        this.assert = assert;
+    }
+}
+
+setWorldConstructor(World);
+```
 
 ## Browser Automation:
 
 ### Selenium WebDriver:
 
-<a href="https://cucumber.io/docs/guides/browser-automation/#selenium-webdriver">TODO</a>
+Cucumber is not a browser automation tool, but it works well with Selenium WebDriver.
+
+Let's install Selenium WebDriver:
+
+```cmd
+npm install selenium-webdriver --save-dev
+```
+
+`test/support/world.js`:
+```js
+const {setWorldConstructor} = require('cucumber');
+const webdriver = require('selenium-webdriver');
+const {expect, assert} = require('chai');
+
+class World {
+    /**
+     * Instantiate the object
+     * @param {JSON} attach - attach anything
+     * @param {Command} parameters - sets the parameters as command
+     */
+    constructor({attach, parameters}) {
+        this.attach = attach; // attaching screenshots to report
+        this.parameters = parameters;
+
+        this.expect = expect;
+        this.assert = assert;
+
+        this.driver = new webdriver.Builder()
+                .forBrowser('chrome')
+                .build();
+    }
+}
+
+setWorldConstructor(World);
+```
+
+`test/features/nazmul-website.feature`:
+
+```feature
+Feature: Nazmul Website Home Page
+
+  Scenario: Nazmul website title
+    Given I visit Nazmul website
+    Then I see title "Nazmul Website | Personal website of Nazmul Basher"
+```
+
+`test/steps/nazmul-website-steps.js`:
+
+```js
+const { Given, Then } = require('cucumber');
+
+Given('I visit Nazmul website', function () {
+    this.driver.get('http://nazmulb.wordpress.com');
+});
+
+Then('Then I see title {string}', function (expectedTitle) {
+    this.driver.getTitle().then(function (actualTitle) {
+        this.expect(actualTitle).to.equal(expectedTitle);
+    });
+});
+```
+
+For <a href="https://docs.seleniumhq.org/docs/03_webdriver.jsp#setting-up-a-selenium-webdriver-project">more info</a>
 
 ## A sample Project using Cucumber JS and Selenium-Webdriver for e2e Test Automation:
 
