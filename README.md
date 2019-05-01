@@ -925,7 +925,7 @@ Given('I visit Nazmul website', function () {
 
 Then('I see title {string}', function (expectedTitle) {
     self = this;
-    this.driver.getTitle().then(function (actualTitle) {
+    return this.driver.getTitle().then(function (actualTitle) {
         self.expect(actualTitle).to.equal(expectedTitle);
     });
 });
