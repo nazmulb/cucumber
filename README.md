@@ -1,6 +1,6 @@
 # Cucumber 
 
-Cucumber is a tool that supports BDD. So let's talk about TDD and BDD.
+Cucumber is a tool that supports BDD. So let's talk about TDD and BDD. [Video Workshop](https://www.youtube.com/playlist?list=PLU0B5opOZ_Dv6t8iKhE4GRkjk9CKJAnJ9)
 
 ## What is TDD?
 
