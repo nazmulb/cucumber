@@ -37,7 +37,7 @@
     "bluebird": "^3.5.3",
     "dotenv": "^7.0.0",
     "is-generator": "^1.0.3",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "mkdirp": "^0.5.1",
     "require-dir": "^1.2.0"
   }
